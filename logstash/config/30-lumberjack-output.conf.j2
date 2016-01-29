@@ -1,4 +1,5 @@
 output {
-  elasticsearch { host => localhost }
-  stdout { codec => rubydebug }
+  elasticsearch {
+    hosts => 'elasticsearch:9200'
+  }
 }

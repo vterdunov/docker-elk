@@ -6,6 +6,7 @@ filter {
       what => "previous"
   }
   grok {
+    patterns_dir => '/etc/logstash/conf.d/files/patterns'
     match => [
       "message", "%{RAILS}"
     ]

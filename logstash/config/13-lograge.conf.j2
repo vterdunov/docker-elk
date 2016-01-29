@@ -1,6 +1,7 @@
 filter {
   if [type] == "lograge" {
     grok {
+      patterns_dir => '/etc/logstash/conf.d/files/patterns'
       match => [ "message", "%{LOGRAGE}" ]
       tag_on_failure => [ "failedLogragePattern" ]
     }
