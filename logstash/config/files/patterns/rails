@@ -1,0 +1,2 @@
+RCONTROLLER (?<controller>[^#]+)#(?<action>\w+)
+RAILS (?m)Started %{WORD:verb} \"%{URIPATHPARAM:request}\" for %{IPORHOST:clientip} at (?<timestamp>%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{HOUR}:%{MINUTE}:%{SECOND} %{ISO8601_TIMEZONE}).*Processing by %{RCONTROLLER} as (?<format>\S+)(?:\W*Parameters: {%{DATA:params}}\W*)?
