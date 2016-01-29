@@ -1,0 +1,22 @@
+filter {
+  if [type] == "rails" {
+  multiline {
+      pattern => "(?m)Started"
+      negate => true
+      what => "previous"
+  }
+  grok {
+    match => [
+      "message", "%{RAILS}"
+    ]
+  }
+  if "_grokparsefailure" in [tags] {
+    drop { }
+  }
+  date {
+    match => [ "timestamp", "YYYY-MM-dd HH:mm:ss Z"]
+    target => "@timestamp"
+    remove_field => "timestamp"
+  }
+  }
+}

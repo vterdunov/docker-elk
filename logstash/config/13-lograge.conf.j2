@@ -1,0 +1,13 @@
+filter {
+  if [type] == "lograge" {
+    grok {
+      match => [ "message", "%{LOGRAGE}" ]
+      tag_on_failure => [ "failedLogragePattern" ]
+    }
+    date {
+      match => [ "timestamp", "YYYY-MM-dd HH:mm:ss"]
+      target => "@timestamp"
+      remove_field => "timestamp"
+    }
+  }
+}
